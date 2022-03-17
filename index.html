@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API data getting
+    </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="s">
+   <table border="4px" cellpadding="19px" id="V">
+
+   </table>
+    </div>
+
+    <script>
+        const apiurl="http://jsonplaceholder.typicode.com/users"
+         var html="<table border='1|1'>"
+        const vino=fetch(apiurl,{
+            method:'GET',
+        });
+        vino
+        .then(function(res){
+            if(res.status==200)
+            return res.json();
+            else console.log("ERROR");
+        })
+        .then(function(data){
+            console.log(data);
+            for(i=0;i<10;i++)
+            {
+                html+="<tr>";
+                html+="<td>"+data[i].id+"</td>"
+                html+="<td>"+data[i].name+"</td>"
+                html+="<td>"+data[i].username+"</td>"
+                html+="<td>"+data[i].email+"</td>"
+                html+="</tr>";
+            }
+            document.getElementById("V").innerHTML=html
+        })
+    </script>
+</body>
+</html>
